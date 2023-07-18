@@ -159,6 +159,6 @@ I would like to thank [Microverse](https://www.microverse.org/).
 
 ## 📝 License <a name="license"></a>
 
-This project is [MIT](./LICENSE) licensed.
+This project is [MIT](https://github.com/iamsjunaid/vet_clinic/blob/bf9f8b06088712b4c6a9735414958a2efed288d1/LICENSE) licensed.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
