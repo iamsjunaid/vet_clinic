@@ -115,7 +115,7 @@ That's it! Congratulations, you have created your database and connected to it. 
 
 👤 **Author1**
 
-- GitHub: [@iamsjunaid](https://github.com/iamsjunaid)
+- GitHub: [@Github](https://github.com/iamsjunaid)
 - LinkedIn: [LinkedIn](https://linkedin.com/in/junaidahmedsyed)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
