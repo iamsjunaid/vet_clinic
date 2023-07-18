@@ -7,3 +7,7 @@ CREATE TABLE IF NOT EXISTS animals (
   neutered boolean,
   weight_kg decimal(10, 2)
 );
+
+/*Add species column to animals table*/
+ALTER TABLE animals
+ADD COLUMN species varchar(255);
