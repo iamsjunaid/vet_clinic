@@ -9,8 +9,10 @@ CREATE TABLE IF NOT EXISTS animals (
 );
 
 /*Add species column to animals table*/
-ALTER TABLE animals
-ADD COLUMN species varchar(255);
+ALTER TABLE
+  animals
+ADD
+  COLUMN species varchar(255);
 
 /*Creating table named owners*/
 CREATE TABLE owners (
@@ -56,3 +58,26 @@ ALTER TABLE
   animals
 ADD
   PRIMARY KEY (id);
+
+/* Creating table named vets*/
+CREATE TABLE vets (
+  id serial PRIMARY KEY,
+  name varchar(255),
+  age integer,
+  date_of_graduation date
+);
+
+/* Creating table named specializations*/
+CREATE TABLE specializations (
+  species_id integer REFERENCES species(id),
+  vet_id integer REFERENCES vets(id),
+  PRIMARY KEY (species_id, vet_id)
+);
+
+/*Creating table named visits*/
+CREATE TABLE visits (
+  animal_id integer REFERENCES animals(id),
+  vet_id integer REFERENCES vets(id),
+  visit_date date,
+  PRIMARY KEY (animal_id, vet_id, visit_date)
+);
