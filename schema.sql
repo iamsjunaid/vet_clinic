@@ -1,83 +1,47 @@
-/* Database schema to keep the structure of entire database. */
-CREATE TABLE IF NOT EXISTS animals (
-  id serial PRIMARY KEY,
-  name varchar(255),
-  date_of_birth date,
-  escape_attempts integer,
-  neutered boolean,
-  weight_kg decimal(10, 2)
+CREATE TABLE owners(
+  id INT GENERATED ALWAYS AS IDENTITY,
+  full_name VARCHAR(20),
+  age INT,
+  PRIMARY KEY(id)
 );
 
-/*Add species column to animals table*/
-ALTER TABLE
-  animals
-ADD
-  COLUMN species varchar(255);
-
-/*Creating table named owners*/
-CREATE TABLE owners (
-  id serial PRIMARY KEY,
-  full_name varchar(255),
-  age integer
+CREATE TABLE species(
+  id INT GENERATED ALWAYS AS IDENTITY,
+  name VARCHAR(20),
+  PRIMARY KEY(id)
 );
 
-/*Creating table named species*/
-CREATE TABLE species (
-  id serial PRIMARY KEY,
-  name varchar(255)
+CREATE TABLE animals(
+  id INT GENERATED ALWAYS AS IDENTITY,
+  name VARCHAR(20),
+  date_of_birth DATE,
+  escape_attempts INT,
+  neutered BOOLEAN,
+  weight_kg DECIMAL,
+  species_id INT REFERENCES species(id),
+  owner_id INT REFERENCES owners(id),
+  PRIMARY KEY(id)
 );
 
-/*Modify animals table*/
-ALTER TABLE
-  animals DROP CONSTRAINT IF EXISTS fk_species_id;
-
-ALTER TABLE
-  animals DROP CONSTRAINT IF EXISTS fk_owner_id;
-
-ALTER TABLE
-  animals DROP COLUMN IF EXISTS species;
-
-ALTER TABLE
-  animals
-ADD
-  COLUMN species_id integer REFERENCES species(id);
-
-ALTER TABLE
-  animals
-ADD
-  COLUMN owner_id integer REFERENCES owners(id);
-
-ALTER TABLE
-  animals
-ALTER COLUMN
-  id
-SET
-  DEFAULT nextval('animals_id_seq');
-
-ALTER TABLE
-  animals
-ADD
-  PRIMARY KEY (id);
-
-/* Creating table named vets*/
-CREATE TABLE vets (
-  id serial PRIMARY KEY,
-  name varchar(255),
-  age integer,
-  date_of_graduation date
+CREATE TABLE vets(
+  id INT GENERATED ALWAYS AS IDENTITY,
+  name VARCHAR(20),
+  age INT,
+  date_of_graduation DATE,
+  PRIMARY KEY(id)
 );
 
-/* Creating table named specializations*/
-CREATE TABLE specializations (
-  species_id integer REFERENCES species(id),
-  vet_id integer REFERENCES vets(id),
-  PRIMARY KEY (species_id, vet_id)
+CREATE TABLE specializations(
+  id INT GENERATED ALWAYS AS IDENTITY,
+  species_id INT REFERENCES species(id),
+  vet_id INT REFERENCES vets(id),
+  PRIMARY KEY(id)
 );
 
-/*Creating table named visits*/
-CREATE TABLE visits (
-  animal_id integer REFERENCES animals(id),
-  vet_id integer REFERENCES vets(id),
-  visit_date date,
-  PRIMARY KEY (animal_id, vet_id, visit_date)
+CREATE TABLE visits(
+  id INT GENERATED ALWAYS AS IDENTITY,
+  animal_id INT REFERENCES animals(id),
+  vet_id INT REFERENCES vets(id),
+  date_of_visit DATE,
+  PRIMARY KEY(id)
 );
