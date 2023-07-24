@@ -45,3 +45,6 @@ CREATE TABLE visits(
   date_of_visit DATE,
   PRIMARY KEY(id)
 );
+
+-- Indexes to speed up queries
+CREATE INDEX ON visits (animal_id);
