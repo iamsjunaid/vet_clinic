@@ -48,3 +48,4 @@ CREATE TABLE visits(
 
 -- Indexes to speed up queries
 CREATE INDEX ON visits (animal_id);
+CREATE INDEX ON visits (vet_id);
