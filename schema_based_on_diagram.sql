@@ -56,3 +56,4 @@ CREATE TABLE medical_histories_treatments (
 -- add FK indexes for faster queries
 CREATE INDEX idx_medical_histories_patient_id ON medical_histories(id);
 CREATE INDEX idx_invoice_items_invoice_id ON invoice_items(id);
+CREATE INDEX idx_invoices_patient_id ON invoices(id);
